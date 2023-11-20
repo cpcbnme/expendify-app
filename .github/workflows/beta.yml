@@ -1,0 +1,38 @@
+name: Build Beta App On Push to Beta branch
+on:
+  push:
+    branches:
+      - beta
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: yarn
+
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Install dependencies
+        run: yarn install
+
+      - name: Change Google API Key
+        uses: restackio/update-json-values-action@v1.0.0
+        with:
+          file: 'google-services.json'
+          values: '{"client": [{"api_key": [{"current_key": "${{ secrets.GOOGLE_API_KEY }}" }]}]}'
+
+      - name: 🚀 Build app
+        run: eas build -p android --profile preview  --non-interactive

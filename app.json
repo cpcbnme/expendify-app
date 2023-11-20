@@ -1,0 +1,77 @@
+{
+	"expo": {
+		"name": "Income",
+		"slug": "income",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/icon.png",
+		"userInterfaceStyle": "automatic",
+		"splash": {
+			"image": "./assets/splash.png",
+			"resizeMode": "cover",
+			"backgroundColor": "#4D2DEC"
+		},
+		"scheme": "com.piscesmetadata.expendify",
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.piscesmetadata.expendify",
+			"infoPlist": {
+				"CFBundleURLTypes": [
+					{
+						"CFBundleURLSchemes": [
+							"com.googleusercontent.apps.161946807233-5jmbfv2uhvghkmnces7q69i7vruh0dop"
+						]
+					}
+				],
+				"NSAppTransportSecurity": [
+					{
+						"NSAllowsArbitraryLoads": ["true"]
+					}
+				]
+			}
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/adaptive-icon.png",
+				"backgroundColor": "#FFFFFF"
+			},
+			"package": "com.piscesmetadata.expendify",
+			"permissions": ["android.permission.RECORD_AUDIO"],
+			"googleServicesFile": "./google-services.json"
+		},
+		"web": {
+			"favicon": "./assets/favicon.png"
+		},
+		"plugins": [
+			[
+				"expo-image-picker",
+				{
+					"photosPermission": "The app accesses your photos to update your profile picture."
+				}
+			],
+			[
+				"expo-build-properties",
+				{
+					"android": {
+						"compileSdkVersion": 33,
+						"targetSdkVersion": 33,
+						"buildToolsVersion": "31.0.0"
+					},
+					"ios": {
+						"deploymentTarget": "13.0"
+					}
+				}
+			]
+		],
+		"owner": "frannlopez",
+		"extra": {
+			"eas": {
+				"projectId": "7ba42c4d-284f-45df-94dc-7a7c7f7d86cb"
+			}
+		}
+	}
+}
