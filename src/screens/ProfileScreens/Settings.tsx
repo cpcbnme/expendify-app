@@ -32,7 +32,7 @@ const Settings = () => {
 				>
 					<Ionicons name="chevron-back" size={24} color="black" />
 				</Pressable>
-				<Text className="font-bold text-lg">Settings</Text>
+				<Text className="font-bold text-lg">Ajustes</Text>
 			</View>
 			<View className="space-y-4">
 				<Text className="text-gray-400 text-base">General</Text>

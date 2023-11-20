@@ -1,18 +1,14 @@
 import {
 	View,
 	Text,
-	TouchableWithoutFeedback,
 	Pressable,
 	SafeAreaView,
-	Keyboard,
 	TextInput,
-	Image,
 	ScrollView,
 	TouchableOpacity,
-	Platform,
 } from "react-native";
 import React, { useState, useContext, useEffect } from "react";
-import { FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import {
@@ -38,8 +34,6 @@ import { SIGNED_IN_USER } from "../../constants/storageConstants";
 import { isStringNullOrEmptyOrWhiteSpace } from "../../constants/commonHelpers";
 
 import * as Google from "expo-auth-session/providers/google";
-import { makeRedirectUri } from "expo-auth-session";
-import appAxios from "../../Helpers/AxiosInterceptor";
 const LoginScreen = () => {
 	const { signInUser } = useContext(UserContext);
 	const navigation = useNavigation();
@@ -112,8 +106,8 @@ const LoginScreen = () => {
 					clearStates();
 					Toast.show({
 						type: "success",
-						text1: "Login Success",
-						text2: `Welcome back ${res?.data?.firstName}`,
+						text1: "Inicio de sesión exitoso",
+						text2: `Hola de nuevo, ${res?.data?.firstName}! 👋`,
 					});
 				});
 			});
@@ -182,8 +176,8 @@ const LoginScreen = () => {
 						clearStates();
 						Toast.show({
 							type: "success",
-							text1: "Login Success",
-							text2: `Welcome back ${res?.data?.firstName}`,
+							text1: "Inicio de sesión exitoso",
+							text2: `Hola de nuevo, ${res?.data?.firstName}! 👋`,
 						});
 					});
 				}

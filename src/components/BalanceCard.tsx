@@ -39,15 +39,6 @@ const BalanceCard = ({ isLoading, clientBalance }: Props) => {
 									Balance de {firstName}
 								</Text>
 							</View>
-							<View>
-								<TouchableOpacity>
-									<Ionicons
-										name="ios-share-outline"
-										size={18}
-										color="white"
-									/>
-								</TouchableOpacity>
-							</View>
 						</View>
 						<View>
 							<Text
