@@ -47,7 +47,7 @@ export const isStringNullOrEmptyOrWhiteSpace = (value: string) => {
 export const getNumberFromString = (val: string) => {
 	if (val) {
 		if (val.length > 1) {
-			const valFirst = val.replace("₦", "");
+			const valFirst = val.replace("$", "");
 			const formattedAmount = Number(valFirst.replace(/,/g, ""));
 			return formattedAmount;
 		}
@@ -139,21 +139,18 @@ export const timeSince = (dateStr) => {
 	}
 	interval = seconds / 3600;
 	if (interval > 1) {
-		return `hace ${Math.floor(interval)} ${
-			interval < 2 ? "hora" : "horas"
-		}`;
+		return `hace ${Math.floor(interval)} ${interval < 2 ? "hora" : "horas"}`;
 		//return Math.floor(interval) + ' horas';
 	}
 	interval = seconds / 60;
 	if (interval > 1) {
-		return `hace ${Math.floor(interval)} minutos`;
-	}
-	if (seconds < 1 && seconds > 0) {
-		return `hace ${Math.floor(seconds)} segundos`;
+		return `hace ${Math.floor(interval)} ${
+			interval < 2 ? "minuto" : "minutos"
+		}`;
 	}
 
 	// if the time is in the future
-	if (seconds === 0) {
+	if (seconds < 60) {
 		return "Justo ahora";
 	}
 
