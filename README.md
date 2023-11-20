@@ -1,4 +1,4 @@
-# Income App
+# Expendify App
 
 An app to keep track of of your expenses and income. This app is built with React Native and Expo, the API is built with .NET Core and Entity Framework Core. The API is hosted on Azure.
 
@@ -16,11 +16,3 @@ An app to keep track of of your expenses and income. This app is built with Reac
 4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 5. Push to the branch (`git push origin feature/AmazingFeature`)
 6. Open a pull request
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## Contact
-
-[Email](mailto:quadrikazeem01@gmail.com)
