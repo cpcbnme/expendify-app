@@ -29,10 +29,7 @@ const UserBar = () => {
 			</View>
 			<View className="flex flex-row">
 				<Text className={`text-xl font-bold font-[${fonts.font700}]`}>
-					{firstName}{" "}
-				</Text>
-				<Text className={`text-xl font-bold font-[${fonts.font700}]`}>
-					{lastName}
+					Mis finanzas 💰
 				</Text>
 			</View>
 		</View>

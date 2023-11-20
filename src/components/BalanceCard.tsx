@@ -36,7 +36,7 @@ const BalanceCard = ({ isLoading, clientBalance }: Props) => {
 									className={`text-white text-lg font-[${fonts.font700}]`}
 								>
 									{" "}
-									Balance de {firstName}
+									Wallet de {firstName}
 								</Text>
 							</View>
 						</View>
