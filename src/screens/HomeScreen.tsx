@@ -34,8 +34,6 @@ const HomeScreen = () => {
 		error,
 		user,
 		errorMessage,
-		setIsLoading,
-		fetchDashboard,
 	} = useDashboardFetch();
 	const navigation = useNavigation();
 	const { setUser } = useContext(UserContext);
@@ -85,18 +83,24 @@ const HomeScreen = () => {
 			});
 
 		responseListener.current =
-			Notifications.addNotificationResponseReceivedListener((response) => {});
+			Notifications.addNotificationResponseReceivedListener(
+				(response) => {}
+			);
 
 		return () => {
 			Notifications.removeNotificationSubscription(
 				notificationListener.current
 			);
-			Notifications.removeNotificationSubscription(responseListener.current);
+			Notifications.removeNotificationSubscription(
+				responseListener.current
+			);
 		};
 	}, []);
 
 	return (
-		<SafeAreaView className={`bg-themeGrey h-full w-full mx-auto px-5 flex-1`}>
+		<SafeAreaView
+			className={`bg-themeGrey h-full w-full mx-auto px-5 flex-1`}
+		>
 			<ScrollView
 				className="flex-1"
 				style={{
@@ -105,7 +109,10 @@ const HomeScreen = () => {
 				scrollEnabled={true}
 				showsVerticalScrollIndicator={false}
 				refreshControl={
-					<RefreshControl refreshing={refresh} onRefresh={onRefresh} />
+					<RefreshControl
+						refreshing={refresh}
+						onRefresh={onRefresh}
+					/>
 				}
 			>
 				<TopBar />

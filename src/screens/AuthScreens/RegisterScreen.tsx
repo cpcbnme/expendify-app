@@ -7,6 +7,7 @@ import {
 	Keyboard,
 	ScrollView,
 	TouchableOpacity,
+	Platform,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
@@ -161,7 +162,7 @@ const RegisterScreen = () => {
 	const [request, response, promptAsync] = Google.useAuthRequest({
 		//TODO: Pick from .env file
 		androidClientId:
-			"916977843040-0e3demrf7vh0asnii1lpq4p2n7najpj4.apps.googleusercontent.com",
+			"161946807233-s4qukrgk8dvcebe65gp2387n38ceascf.apps.googleusercontent.com",
 		expoClientId:
 			"916977843040-nrncesmq80cl3kiv66ldgt5gk0s40942.apps.googleusercontent.com",
 		iosClientId:

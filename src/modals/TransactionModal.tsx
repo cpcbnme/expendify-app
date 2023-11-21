@@ -15,7 +15,6 @@ import { useCategoryFetch } from "../hooks/useCategoryFetch";
 import CustomLoadingComponent from "../components/CustomLoadingComponent";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { useTransactionSave } from "../hooks/useTransactionSave";
-import { useNavigation } from "@react-navigation/native";
 import CurrencyInput from "react-native-currency-input";
 import { convertDate, getNumberFromString } from "../constants/commonHelpers";
 import DateTimePicker, {
@@ -92,7 +91,7 @@ const TransactionModal = ({ route, navigation }) => {
 			Toast.show({
 				type: "error",
 				text1: "Error",
-				text2: "Please fill all fields",
+				text2: "Por favor, llena todos los campos",
 			});
 		}
 	};
@@ -106,7 +105,9 @@ const TransactionModal = ({ route, navigation }) => {
 				/>
 				<View className="space-y-5">
 					<View>
-						<Text className={`text-base font-[${fonts.font700}]`}>Title</Text>
+						<Text className={`text-base font-[${fonts.font700}]`}>
+							Title
+						</Text>
 						<View className="flex flex-row bg-themeGrey py-2 px-3 rounded-md items-center my-1">
 							<TextInput
 								placeholder="Iced Coffee en Sweet & Coffee"
@@ -138,12 +139,18 @@ const TransactionModal = ({ route, navigation }) => {
 						</View>
 					</View>
 					<View className="flex flex-col">
-						<Text className={`text-base font-[${fonts.font700}]`}>Fecha</Text>
+						<Text className={`text-base font-[${fonts.font700}]`}>
+							Fecha
+						</Text>
 						<View className="flex flex-row bg-themeGrey py-2 px-3 rounded-md items-center my-1">
-							<TouchableOpacity onPress={handleShowDateTimePicker}>
+							<TouchableOpacity
+								onPress={handleShowDateTimePicker}
+							>
 								<View className="ml-1 px-1 w-full py-2">
 									<Text className="">
-										{new Date(dateTimeString).toLocaleString("es", {
+										{new Date(
+											dateTimeString
+										).toLocaleString("es", {
 											weekday: "short",
 											year: "numeric",
 											month: "short",
@@ -179,7 +186,9 @@ const TransactionModal = ({ route, navigation }) => {
 						</View>
 					</View>
 					<View className="flex flex-col">
-						<Text className={`text-base font-[${fonts.font700}]`}>Monto</Text>
+						<Text className={`text-base font-[${fonts.font700}]`}>
+							Monto
+						</Text>
 						<View className="flex flex-row bg-themeGrey py-2 px-3 rounded-md items-center my-1">
 							{/* <TextInput
               placeholder='₦ 0.00'

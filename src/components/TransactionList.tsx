@@ -43,7 +43,6 @@ const TransactionList = () => {
 				{isLoading === true ? (
 					<Loading />
 				) : (
-					//TODO: Group by date
 					transactionItems?.map((item: Transaction) => {
 						return (
 							<TransationItem
