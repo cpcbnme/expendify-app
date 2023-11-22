@@ -8,10 +8,7 @@ import {
 	ScrollView,
 	TouchableOpacity,
 	Platform,
-<<<<<<< Updated upstream
-=======
 	Pressable,
->>>>>>> Stashed changes
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
@@ -234,6 +231,8 @@ const RegisterScreen = () => {
 	const handleSignUpWithGoogle = async () => {
 		await promptAsync({ showInRecents: true, useProxy: true });
 	};
+
+	const isIos = Platform.OS === "ios";
 	return (
 		<ScrollView>
 			<TouchableWithoutFeedback
@@ -241,7 +240,7 @@ const RegisterScreen = () => {
 					Keyboard.dismiss();
 				}}
 			>
-				<SafeAreaView className="flex-1 mx-4 mt-10">
+				<SafeAreaView className="flex-1 mx-4">
 					<View className="mt-5 space-y-5">
 						<Text className="text-accent text-2xl font-bold">
 							Hola, registraste para empezar
@@ -335,34 +334,40 @@ const RegisterScreen = () => {
 								action={handleRegister}
 								buttonName="Registrarse"
 							/>
-							<View className="flex flex-row justify-around">
-								<Image
-									source={assetsObject.line}
-									className="w-[105px] mt-2"
-								/>
-								<Text className="text-gray-900 text-center font-semibold">
-									También puedes
-								</Text>
-								<Image
-									source={assetsObject.line}
-									className="w-[105px] mt-2"
-								/>
-							</View>
+							{isIos && (
+								<>
+									<View className="flex flex-row justify-around">
+										<Image
+											source={assetsObject.line}
+											className="w-[105px] mt-2"
+										/>
+										<Text className="text-gray-900 text-center font-semibold">
+											También puedes
+										</Text>
+										<Image
+											source={assetsObject.line}
+											className="w-[105px] mt-2"
+										/>
+									</View>
+								</>
+							)}
 						</View>
 						<View className="flex flex-row space-x-2">
-							<TouchableOpacity
-								className="border border-gray-400 rounded-md p-2 flex flex-row justify-center items-center w-full space-x-2 h-12"
-								onPress={handleSignUpWithGoogle}
-							>
-								<FontAwesome5
-									name="google"
-									size={20}
-									color="black"
-								/>
-								<Text className="text-gray-900 text-center font-semibold">
-									Registrarte con Google
-								</Text>
-							</TouchableOpacity>
+							{isIos && (
+								<TouchableOpacity
+									className="border border-gray-400 rounded-md p-2 flex flex-row justify-center items-center w-full space-x-2 h-12"
+									onPress={handleSignUpWithGoogle}
+								>
+									<FontAwesome5
+										name="google"
+										size={20}
+										color="black"
+									/>
+									<Text className="text-gray-900 text-center font-semibold">
+										Registrarte con Google
+									</Text>
+								</TouchableOpacity>
+							)}
 						</View>
 					</View>
 					<View className="flex flex-row w-full justify-center space-x-2 my-4">
