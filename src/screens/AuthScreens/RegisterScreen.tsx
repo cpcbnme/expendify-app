@@ -8,6 +8,10 @@ import {
 	ScrollView,
 	TouchableOpacity,
 	Platform,
+<<<<<<< Updated upstream
+=======
+	Pressable,
+>>>>>>> Stashed changes
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
@@ -49,10 +53,10 @@ const RegisterScreen = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [accessToken, setAccessToken] = useState("");
 	const [checklist, setChecklist] = useState([
-		{ label: "At least 6 characters", done: false },
-		{ label: "Contains a capital letter", done: false },
-		{ label: "Contains a number", done: false },
-		{ label: "Contains a special character", done: false },
+		{ label: "Al menos 6 caracteres", done: false },
+		{ label: "Debe contener una mayuscula", done: false },
+		{ label: "Contiene un numero", done: false },
+		{ label: "Contiene un caracter especial", done: false },
 	]);
 
 	const { signInUser } = useContext(UserContext);
@@ -110,14 +114,17 @@ const RegisterScreen = () => {
 								setIsLoading(false);
 								Toast.show({
 									type: "error",
-									text1: "Register Error",
-									text2: res.message,
+									text1: "Error al registrarse",
+									text2:
+										res.message === "User already exists"
+											? "El usuario ya existe"
+											: res.message,
 								});
 							} else {
 								setIsLoading(false);
 								Toast.show({
 									type: "success",
-									text1: "Register Success",
+									text1: "Registro exitoso",
 									text2: res.message,
 								});
 								GotoOTP();
@@ -135,22 +142,22 @@ const RegisterScreen = () => {
 					setIsLoading(false);
 					Toast.show({
 						type: "error",
-						text1: "Register Error",
+						text1: "Error al registrarse",
 						text2: error.message,
 					});
 				}
 			} else {
 				Toast.show({
 					type: "error",
-					text1: "Validation Error",
+					text1: "Contraseña no válida",
 					text2: isValidPass.message,
 				});
 			}
 		} else {
 			Toast.show({
 				type: "error",
-				text1: "Validation Error",
-				text2: "Email must be valid and passwords must match",
+				text1: "Error al registrarse",
+				text2: "El correo electrónico no es válido o las contraseñas no coinciden",
 			});
 		}
 	};
@@ -190,7 +197,7 @@ const RegisterScreen = () => {
 						setIsLoading(false);
 						Toast.show({
 							type: "error",
-							text1: "Register Error",
+							text1: "Error al registrarse",
 							text2: res.message,
 						});
 						return;
@@ -199,8 +206,8 @@ const RegisterScreen = () => {
 						setIsLoading(false);
 						Toast.show({
 							type: "error",
-							text1: "Register Error",
-							text2: "Please try again",
+							text1: "Error al registrarse",
+							text2: "Intente de nuevo",
 						});
 						return;
 					}
@@ -208,8 +215,8 @@ const RegisterScreen = () => {
 						setIsLoading(false);
 						Toast.show({
 							type: "success",
-							text1: "Register Success",
-							text2: `Welcome ${res?.data?.firstName}`,
+							text1: "Registro exitoso",
+							text2: `Bienvenido, ${res?.data?.firstName}`,
 						});
 					});
 				}
@@ -234,11 +241,114 @@ const RegisterScreen = () => {
 					Keyboard.dismiss();
 				}}
 			>
-				<SafeAreaView className="flex-1 mx-4">
+				<SafeAreaView className="flex-1 mx-4 mt-10">
 					<View className="mt-5 space-y-5">
 						<Text className="text-accent text-2xl font-bold">
-							Registrate para empezar
+							Hola, registraste para empezar
 						</Text>
+						<View className="space-y-4">
+							<TextInput
+								onChangeText={(text) => {
+									handleUsername(text);
+								}}
+								value={username}
+								placeholder="Nombre de usuario"
+								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
+							/>
+							<TextInput
+								onChangeText={(text) => {
+									setFirstname(text);
+								}}
+								value={firstname}
+								placeholder="Nombre"
+								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
+							/>
+							<TextInput
+								onChangeText={(text) => {
+									setLastname(text);
+								}}
+								value={lastname}
+								placeholder="Apellido"
+								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
+							/>
+							<TextInput
+								onChangeText={(text) => {
+									handleEmail(text);
+								}}
+								value={Email}
+								onEndEditing={CheckValidation}
+								placeholder="Correo electrónico"
+								className={`text-sm border ${textinputBorder} h-[56px] pl-4 bg-inputBackground rounded-md`}
+							/>
+							<TextInput
+								onChangeText={(text) => {
+									setPhoneNumber(text);
+								}}
+								value={phoneNumber}
+								placeholder="Numero telefonico"
+								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
+							/>
+							<TextInput
+								onChangeText={(text) => {
+									handlePassword(text);
+								}}
+								value={Password}
+								placeholder="Contraseña"
+								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
+								secureTextEntry={true}
+							/>
+							<View className="flex-col flex-wrap items-start">
+								{checklist.map((item, index) => (
+									<View
+										key={index}
+										className="flex-row items-center my-2 mr-4"
+									>
+										<Text
+											className={
+												item.done
+													? `text-gray-400 line-through`
+													: `text-gray-700`
+											}
+										>
+											{item.label}
+										</Text>
+										{item.done ? (
+											<View className="bg-accent rounded-full w-4 h-4 ml-2" />
+										) : (
+											<View className="border border-gray-300 rounded-full w-4 h-4 ml-2" />
+										)}
+									</View>
+								))}
+							</View>
+							<TextInput
+								onChangeText={(text) => {
+									handleConfirmPassword(text);
+								}}
+								value={ConfirmPassword}
+								placeholder="Confirmar contraseña"
+								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
+								secureTextEntry={true}
+							/>
+						</View>
+						<View className="space-y-5">
+							<BigBlueButton
+								action={handleRegister}
+								buttonName="Registrarse"
+							/>
+							<View className="flex flex-row justify-around">
+								<Image
+									source={assetsObject.line}
+									className="w-[105px] mt-2"
+								/>
+								<Text className="text-gray-900 text-center font-semibold">
+									También puedes
+								</Text>
+								<Image
+									source={assetsObject.line}
+									className="w-[105px] mt-2"
+								/>
+							</View>
+						</View>
 						<View className="flex flex-row space-x-2">
 							<TouchableOpacity
 								className="border border-gray-400 rounded-md p-2 flex flex-row justify-center items-center w-full space-x-2 h-12"
@@ -250,7 +360,7 @@ const RegisterScreen = () => {
 									color="black"
 								/>
 								<Text className="text-gray-900 text-center font-semibold">
-									Registrarse con Google
+									Registrarte con Google
 								</Text>
 							</TouchableOpacity>
 						</View>

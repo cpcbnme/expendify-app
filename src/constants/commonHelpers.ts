@@ -180,31 +180,31 @@ export const isValidPassword = (
 		{
 			score: 0,
 			level: "Weak",
-			message: "😢 Your password is too weak. Add more characters",
+			message: "😢 Tu  contraseña es demasiado corta.",
 			color: "red",
 		},
 		{
 			score: 1,
 			level: "Fair",
-			message: "😐 Your password is fair, but it could be stronger.",
+			message: "😐 Tu contraseña es simple.",
 			color: "orange",
 		},
 		{
 			score: 2,
 			level: "Good",
-			message: "😊 Your password could be better.",
+			message: "😊 Haz un mejor esfuerzo con tu contraseña.",
 			color: "yellow",
 		},
 		{
 			score: 3,
 			level: "Better",
-			message: "😍 Your password is almost there!",
+			message: "😍 Ya casi, prueba con otra contraseña.",
 			color: "green",
 		},
 		{
 			score: 4,
 			level: "Strong",
-			message: "😍 Your password is strong! Just one more check!",
+			message: "😍 Tu contraseña es lo suficientemente adecuada.",
 			color: "green",
 		},
 		// {
