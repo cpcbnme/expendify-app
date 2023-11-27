@@ -1,6 +1,6 @@
 {
 	"expo": {
-		"name": "Income",
+		"name": "expendify",
 		"slug": "income",
 		"version": "1.0.0",
 		"orientation": "portrait",
@@ -20,13 +20,6 @@
 			"supportsTablet": true,
 			"bundleIdentifier": "com.piscesmetadata.expendify",
 			"infoPlist": {
-				"CFBundleURLTypes": [
-					{
-						"CFBundleURLSchemes": [
-							"com.googleusercontent.apps.161946807233-5jmbfv2uhvghkmnces7q69i7vruh0dop"
-						]
-					}
-				],
 				"NSAppTransportSecurity": [
 					{
 						"NSAllowsArbitraryLoads": ["true"]
@@ -40,8 +33,7 @@
 				"backgroundColor": "#FFFFFF"
 			},
 			"package": "com.piscesmetadata.expendify",
-			"permissions": ["android.permission.RECORD_AUDIO"],
-			"googleServicesFile": "./google-services.json"
+			"permissions": ["android.permission.RECORD_AUDIO"]
 		},
 		"web": {
 			"favicon": "./assets/favicon.png"

@@ -120,8 +120,7 @@ export const getSpanishInitials = (name: string) => {
 
 export const timeSince = (dateStr) => {
 	const date = new Date(dateStr);
-	const ecuadorDate = new Date(date.getTime() - 5 * 60 * 60 * 1000); // HACK: Ecuador time is 5 hours behind UTC
-	var seconds = Math.floor((new Date() - ecuadorDate) / 1000);
+	var seconds = Math.floor((new Date() - date) / 1000);
 
 	var interval = seconds / 31536000;
 
@@ -139,7 +138,9 @@ export const timeSince = (dateStr) => {
 	}
 	interval = seconds / 3600;
 	if (interval > 1) {
-		return `hace ${Math.floor(interval)} ${interval < 2 ? "hora" : "horas"}`;
+		return `hace ${Math.floor(interval)} ${
+			interval < 2 ? "hora" : "horas"
+		}`;
 		//return Math.floor(interval) + ' horas';
 	}
 	interval = seconds / 60;
@@ -155,7 +156,7 @@ export const timeSince = (dateStr) => {
 	}
 
 	if (seconds < -1) {
-		return `${ecuadorDate}`;
+		return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 	}
 };
 
@@ -179,31 +180,32 @@ export const isValidPassword = (
 		{
 			score: 0,
 			level: "Weak",
-			message: "😢 Your password is too weak. Add more characters",
+			message: "Tu contraseña es demasiado corta.",
 			color: "red",
 		},
 		{
 			score: 1,
 			level: "Fair",
-			message: "😐 Your password is fair, but it could be stronger.",
+			message: "Tu contraseña es muy simple",
 			color: "orange",
 		},
 		{
 			score: 2,
 			level: "Good",
-			message: "😊 Your password could be better.",
+			message: "Haz un mejor esfuerzo con tu contraseña.",
 			color: "yellow",
 		},
 		{
 			score: 3,
 			level: "Better",
-			message: "😍 Your password is almost there!",
+			message: "Ya casi, pero no es lo suficientemente segura.",
 			color: "green",
 		},
 		{
 			score: 4,
 			level: "Strong",
-			message: "😍 Your password is strong! Just one more check!",
+			message:
+				"Estas a un paso, escribe algo más para que sea más segura.",
 			color: "green",
 		},
 		// {

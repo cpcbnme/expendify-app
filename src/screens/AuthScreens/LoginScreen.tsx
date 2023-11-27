@@ -6,6 +6,7 @@ import {
 	TextInput,
 	ScrollView,
 	TouchableOpacity,
+	Platform,
 } from "react-native";
 import React, { useState, useContext, useEffect } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -133,7 +134,7 @@ const LoginScreen = () => {
 	const [request, response, promptAsync] = Google.useAuthRequest({
 		//TODO: Pick from .env file
 		androidClientId:
-			"916977843040-0e3demrf7vh0asnii1lpq4p2n7najpj4.apps.googleusercontent.com",
+			"161946807233-s4qukrgk8dvcebe65gp2387n38ceascf.apps.googleusercontent.com",
 		expoClientId:
 			"916977843040-nrncesmq80cl3kiv66ldgt5gk0s40942.apps.googleusercontent.com",
 		iosClientId:
@@ -206,6 +207,8 @@ const LoginScreen = () => {
 		return false;
 	};
 
+	const isIos = Platform.OS === "ios";
+
 	return (
 		<ScrollView>
 			<SafeAreaView className="flex-1 mx-4 mt-10 relative">
@@ -270,32 +273,36 @@ const LoginScreen = () => {
 							</Pressable>
 						</View>
 					</View>
-					<View className="space-y-5">
-						<BigBlueButton
-							action={Login}
-							buttonName={"Iniciar sesión"}
-						/>
-						<View className="flex flex-row justify-center">
-							<Text className="text-gray-900 text-center font-semibold">
-								O también puedes
-							</Text>
-						</View>
-						<View className="flex flex-row space-x-2">
-							<TouchableOpacity
-								className="border border-gray-400 rounded-md p-2 flex flex-row justify-center items-center w-full space-x-2 h-12"
-								onPress={handleSignInWithGoogle}
-							>
-								<FontAwesome5
-									name="google"
-									size={20}
-									color="black"
-								/>
-								<Text className="text-gray-900 text-center font-semibold">
-									Continuar con Google
-								</Text>
-							</TouchableOpacity>
-						</View>
-					</View>
+					<BigBlueButton
+						action={Login}
+						buttonName={"Iniciar sesión"}
+					/>
+					{isIos && (
+						<>
+							<View className="space-y-5">
+								<View className="flex flex-row justify-center">
+									<Text className="text-gray-900 text-center font-semibold">
+										O también puedes
+									</Text>
+								</View>
+								<View className="flex flex-row space-x-2">
+									<TouchableOpacity
+										className="border border-gray-400 rounded-md p-2 flex flex-row justify-center items-center w-full space-x-2 h-12"
+										onPress={handleSignInWithGoogle}
+									>
+										<FontAwesome5
+											name="google"
+											size={20}
+											color="black"
+										/>
+										<Text className="text-gray-900 text-center font-semibold">
+											Continuar con Google
+										</Text>
+									</TouchableOpacity>
+								</View>
+							</View>
+						</>
+					)}
 				</View>
 				<View className="flex flex-row w-full justify-center mt-10 space-x-2  bottom-8">
 					<Text className="font-normal text-base">
