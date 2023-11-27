@@ -112,6 +112,7 @@ const ResetPasswordProfile = () => {
 						}}
 						className="ml-4"
 						placeholder="Contraseña anterior"
+						placeholderTextColor="gray"
 					/>
 				</View>
 				<View className="h-[64px] bg-white rounded-md">
@@ -125,6 +126,7 @@ const ResetPasswordProfile = () => {
 						}}
 						className="ml-4"
 						placeholder="Ingresa la nueva contraseña"
+						placeholderTextColor="gray"
 					/>
 				</View>
 				<View className="h-[64px] bg-white rounded-md">
@@ -138,6 +140,7 @@ const ResetPasswordProfile = () => {
 						}}
 						className="ml-4"
 						placeholder="Repite la nueva contraseña"
+						placeholderTextColor="gray"
 					/>
 				</View>
 			</View>

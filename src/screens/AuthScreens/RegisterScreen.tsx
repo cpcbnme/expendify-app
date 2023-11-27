@@ -8,7 +8,6 @@ import {
 	ScrollView,
 	TouchableOpacity,
 	Platform,
-	Pressable,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
@@ -35,8 +34,8 @@ import {
 } from "../../constants/commonHelpers";
 import { UserContext } from "../../contexts/user.context";
 import * as Google from "expo-auth-session/providers/google";
-import { makeRedirectUri } from "expo-auth-session";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 const RegisterScreen = () => {
 	const navigation = useNavigation();
 	const [username, setUsername] = useState("");
@@ -252,6 +251,7 @@ const RegisterScreen = () => {
 								}}
 								value={username}
 								placeholder="Nombre de usuario"
+								placeholderTextColor="gray"
 								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
 							/>
 							<TextInput
@@ -260,6 +260,7 @@ const RegisterScreen = () => {
 								}}
 								value={firstname}
 								placeholder="Nombre"
+								placeholderTextColor="gray"
 								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
 							/>
 							<TextInput
@@ -268,6 +269,7 @@ const RegisterScreen = () => {
 								}}
 								value={lastname}
 								placeholder="Apellido"
+								placeholderTextColor="gray"
 								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
 							/>
 							<TextInput
@@ -277,6 +279,7 @@ const RegisterScreen = () => {
 								value={Email}
 								onEndEditing={CheckValidation}
 								placeholder="Correo electrónico"
+								placeholderTextColor="gray"
 								className={`text-sm border ${textinputBorder} h-[56px] pl-4 bg-inputBackground rounded-md`}
 							/>
 							<TextInput
@@ -285,6 +288,7 @@ const RegisterScreen = () => {
 								}}
 								value={phoneNumber}
 								placeholder="Numero telefonico"
+								placeholderTextColor="gray"
 								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
 							/>
 							<TextInput
@@ -293,6 +297,7 @@ const RegisterScreen = () => {
 								}}
 								value={Password}
 								placeholder="Contraseña"
+								placeholderTextColor="gray"
 								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
 								secureTextEntry={true}
 							/>
@@ -325,6 +330,7 @@ const RegisterScreen = () => {
 								}}
 								value={ConfirmPassword}
 								placeholder="Confirmar contraseña"
+								placeholderTextColor="gray"
 								className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
 								secureTextEntry={true}
 							/>

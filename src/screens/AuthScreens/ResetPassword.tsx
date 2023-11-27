@@ -126,6 +126,7 @@ const ResetPassword = ({ route, navigation }) => {
 						}}
 						value={Password}
 						placeholder="Nueva contraseña"
+						placeholderTextColor="gray"
 						className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
 						secureTextEntry={true}
 					/>
@@ -135,6 +136,7 @@ const ResetPassword = ({ route, navigation }) => {
 						}}
 						value={ConfirmPassword}
 						placeholder="Confirmar contraseña"
+						placeholderTextColor="gray"
 						className="text-sm border border-gray-400 h-[56px] pl-4 bg-inputBackground rounded-md"
 						secureTextEntry={true}
 					/>
